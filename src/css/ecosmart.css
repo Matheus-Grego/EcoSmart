@@ -1,0 +1,79 @@
+.maincontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    flex-direction: column;
+    gap: 20px
+}
+.search{
+    padding: 10px 150px;
+    border-radius: 100px;
+    background-color:#F5F5F5 ;
+    border: none;
+}
+.cardscontainer{
+    display: flex;
+    height: 60vh;
+}
+.content{
+    opacity: 0;
+}
+.card{
+    transition: all 0.3s;
+    flex:1;
+    text-align: center;
+    align-content: start;
+    overflow: hidden;
+    position: relative;
+}
+
+.cover {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s 0.3s; /* Animação de fade e delay na visibilidade */
+  }
+.card:hover {
+    flex:3;
+
+}
+.contentbox{
+    color:white;
+}
+.card:hover .contentbox{
+    animation: appearing 0.3s ease forwards;
+}
+.card:hover .cover{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s 0.3s;
+
+}
+.card:hover .content{
+
+    opacity: 1;
+    transition: opacity 0.5s ease-in
+  
+  }
+
+@keyframes appearing{
+    0%{
+        transform: translateY(0);
+    }
+
+    100%{
+        transform: translateY(-275px)
+    }
+}
+
+/* @keyframes disapearing{
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-500px);
+    }
+    100%{
+        transform: translateY(-1000px)
+    }
+} */
