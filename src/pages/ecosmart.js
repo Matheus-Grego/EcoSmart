@@ -5,6 +5,21 @@ import "../css/ecosmart.css"
 const Ecosmart = () => {
     const [dados, setDados] = useState(null)
 
+    const useNavBar = () => {
+        useEffect(() => {
+            const navBar = document.getElementsByClassName("nav-report-order")[0];
+            if (navBar) {
+                navBar.classList.add("nav-comm");
+            }
+
+            return () => {
+                const navBarComm = document.getElementsByClassName("nav-comm")[0];
+                if (navBarComm)
+                    navBarComm.classList.remove("nav-comm");
+            };
+        }, []);
+    };
+    useNavBar();
     // useEffect(() => {
     //     fetch('wordlist.json')
     //       .then(response => {
@@ -19,14 +34,24 @@ const Ecosmart = () => {
     //   alert(JSON.stringify(dados))
 
     return(
+       
         <div className='Ecosmart'>
+             <div className='navbar'>
+                <a>Dados Reciclagem</a>
+                <a>Separacão de residos</a>
+                <a>Beneficios da coleta</a>
+                <a>Educacão e dicas</a>
+            </div>
             <div className='maincontainer'>
                 <div className='IconContainer'>
                     <img width={"350px"} src='/ecosmart-icons/logo.png'></img>
                     
                 </div>
-                <input type="text" className='search'></input>
-                <button>pesquisar</button>
+                <div class="search-container">
+                    <input type="text" className='search'></input>
+                    <img width={"20px"} src='/ecosmart-icons/search.png'></img>
+                </div>
+               
 
                 {/* <img width={"20px"} src='/ecosmart-icons/search.png'></img> */}
             </div>
