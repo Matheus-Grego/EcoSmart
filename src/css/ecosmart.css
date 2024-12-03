@@ -1,3 +1,52 @@
+.Ecosmart{
+    background-color: white;
+}
+.navbar{
+
+    display: flex;
+    justify-content: center;
+    gap: 20px
+}
+.navbar > a {
+    margin-top: 40px;
+    font-size: 15px;
+    color: #7ead9a;
+    padding: 5px 5px;
+    border: 2px solid #7ead9a;
+    border-top: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1
+}
+
+.navbar > a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    color: white;
+    background-color: #5db491;
+    transition: height 0.3s ease-out;
+    z-index: -1;
+}
+
+.navbar > a:hover::before {
+    height: 100%;
+}
+
+.navbar > a:hover {
+    color: white;
+}
+
+.nav-comm{
+    display: none;
+}
+
+.remove{
+    display: none;
+}
 .maincontainer{
     display: flex;
     justify-content: center;
@@ -12,6 +61,12 @@
     background-color:#F5F5F5 ;
     border: none;
 }
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color:#F5F5F5 ;
+    border: none;
+  }
 .cardscontainer{
     display: flex;
     height: 60vh;
@@ -62,7 +117,7 @@
     }
 
     100%{
-        transform: translateY(-275px)
+        transform: translateY(-35vh)
     }
 }
 
