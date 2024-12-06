@@ -1,6 +1,10 @@
 .Ecosmart{
     background-color: white;
 }
+
+.recycle-icon{
+    margin-top: 40px;
+}
 .navbar{
 
     display: flex;
@@ -80,7 +84,7 @@
     text-align: center;
     align-content: start;
     overflow: hidden;
-    position: relative;
+
 }
 
 .cover {
@@ -90,19 +94,29 @@
   }
 .card:hover {
     flex:3;
-
 }
+.active{
+    flex:3;
+}
+
 .contentbox{
     color:white;
 }
 .card:hover .contentbox{
     animation: appearing 0.3s ease forwards;
 }
+.active .contentbox{
+    animation: appearing 0.3s ease forwards;
+}
 .card:hover .cover{
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0s 0.3s;
-
+}
+.active .cover{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s 0.3s;
 }
 .card:hover .content{
 
@@ -110,6 +124,10 @@
     transition: opacity 0.5s ease-in
   
   }
+.active .content{
+    opacity: 1;
+    transition: opacity 0.5s ease-in
+}
 
 @keyframes appearing{
     0%{
