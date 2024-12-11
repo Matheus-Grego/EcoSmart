@@ -1,9 +1,19 @@
 .Ecosmart{
     background-color: white;
 }
+span{
+    color: #7ead9a;
+    font-family: PoppinsMedium;
+}
 
 .recycle-icon{
     margin-top: 40px;
+}
+.title{
+    color: #7ead9a; 
+    text-align: center;
+    font-size: 25px;
+    font-family: MontserratBold;
 }
 .navbar{
 
@@ -47,6 +57,22 @@
 .nav-comm{
     display: none;
 }
+
+.suggestions-list{
+    list-style-type: none;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 50vw;
+    gap: 20px;
+}
+.suggestions-list > li{
+    background-color: #F5F5F5;
+    padding: 5px 10px;
+    border-radius: 200px;
+}
+
 
 .remove{
     display: none;
