@@ -28,9 +28,9 @@ span{
     padding: 5px 5px;
     border: 2px solid #7ead9a;
     border-top: none;
+    z-index: 1;
     position: relative;
     overflow: hidden;
-    z-index: 1
 }
 
 .navbar > a::before {
@@ -60,7 +60,7 @@ span{
 
 .suggestions-list{
     list-style-type: none;
-    overflow: hidden;
+
     display: flex;
     justify-content: center;
     text-align: center;
@@ -68,10 +68,22 @@ span{
     gap: 20px;
 }
 .suggestions-list > li{
-    background-color: #F5F5F5;
-    padding: 5px 10px;
+    background-color: #7ead9a;
+    color: white;
+    padding: 10px 15px;
     border-radius: 200px;
+    white-space: nowrap;
 }
+.suggestions-list > li:hover{
+    background-color: #5d7e71;
+}
+.modalText {
+    margin-top: 10px;
+    color: #2B302E;
+    max-height: 70vh;
+    overflow-y: auto;
+    margin-bottom: 10px;
+  }
 
 
 .remove{
@@ -90,13 +102,16 @@ span{
     border-radius: 100px;
     background-color:#F5F5F5 ;
     border: none;
+    outline: hidden;
 }
 .search-container {
     display: flex;
     align-items: center;
     background-color:#F5F5F5 ;
     border: none;
+    outline: hidden;
   }
+
 .cardscontainer{
     display: flex;
     height: 60vh;
