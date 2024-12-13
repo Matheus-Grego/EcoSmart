@@ -49,8 +49,6 @@ const Ecosmart = () => {
       setModalText(null);
     };
 
-
-
     const useNavBar = () => {
         useEffect(() => {
             const navBar = document.getElementsByClassName("nav-report-order")[0];
@@ -81,6 +79,8 @@ const Ecosmart = () => {
           "livro",
         ],
         "plastic": [
+          "suco",
+          " suco",
           "embalagem plástica",
           "embalagem transparente",
           "garrafa plástica",
@@ -88,18 +88,17 @@ const Ecosmart = () => {
           "plastico",
           "sacola",
           "tampa",
-          "copo plastico",
-          "pote",
+          "de plastico",
           "pacote"
         ],
         "glass": [
           "garrafa de vidro",
           "vidro",
+          "de vidro",
           "cacos",
           "pote de vidro",
           "frasco",
           "recipiente de vidro",
-          "copo de vidro"
         ],
         "metal": [
           "lata",
@@ -107,16 +106,23 @@ const Ecosmart = () => {
           "aluminio",
           "garrafa de metal",
           "grampo",
-          "metal"
+          "metal",
+          "de metal",
+          "metálica"
         ],
 
         "organic": [
           "casca",
           "marmita",
           "guardanapo sujo",
+          "pote de marmita",
           "papel toalha usado"
         ],
         "non-recycle": [
+          "sujo",
+          "suja",
+          " sujo",
+          " suja",
           "adesivo",
           "guardanapo limpo",
           "sujeira",
@@ -126,6 +132,7 @@ const Ecosmart = () => {
           "embalagem de salgadinho",
           "sachê",
           "pacote laminado",
+          "contaminado"
         ],
         "organic-food": [
           "restos",
@@ -138,14 +145,33 @@ const Ecosmart = () => {
           "vegetais",
           "semente",
           "carcaça",
-          "osso"
+          "osso",
+          "comida"
+        ],
+        "organic-food": [
+          "restos",
+          "alimentos",
+          "legumes",
+          "fruta",
+          "maça",
+          "massa",
+          "alimentos",
+          "vegetais",
+          "semente",
+          "carcaça",
+          "osso",
+          "comida"
+        ],
+        "coffee":[
+          "copo",
+          "copo plástico",
+          "café"
         ]
       }]
       
       const SearchData = (searchvalue) => {
-        document.getElementsByClassName("search").value = ""
          trash.map(item => {
-             for (const type of ['paper', 'plastic', 'glass','metal','organic','organic-food','non-recycle']) {
+             for (const type of ['paper', 'plastic', 'glass','metal','organic','organic-food','non-recycle','coffee']) {
                if (item[type].includes(searchvalue)) {
                  document.getElementById(type).classList.add('active');
                  setTimeout(() => {
@@ -166,19 +192,26 @@ const Ecosmart = () => {
 
       const handleKeyPress = e => {
         if (e.key === "Enter") {
-          SearchData(Search);
+          var firstsuggestion = document.getElementsByTagName('li')[0]? document.getElementsByTagName('li')[0].innerText : null
+          SearchData(firstsuggestion);
         }
       };
 
       const handleSearchChange = (e) => {
         
         setSearch(e.target.value);
-        const query = e.target.value.replace(' ', ''); 
+        const query = e.target.value; 
         if (query.length > 0) {
             // Junta todas as palavras de todas as categorias
             const allWords = trash[0] ? Object.values(trash[0]).flat() : [];
-            const filteredSuggestions = allWords.filter(word => (word.toLowerCase().includes(query) || query.includes(word))).slice(0,4);
-            --
+            var filteredSuggestions = allWords.filter(word => (word.toLowerCase().includes(query))).slice(0,4);
+            const lastWord = query.slice(-5);
+            if(filteredSuggestions.length == 0){
+              filteredSuggestions= allWords.filter(word => lastWord.includes(word.slice(0, 3))).slice(0,4)
+              if (filteredSuggestions.length == 0){
+                filteredSuggestions= allWords.filter(word => query.includes(word.slice(0, 2))).slice(0,4)
+              }
+            }
             setSuggestions(filteredSuggestions);
         } else {     
             setSuggestions([]);
@@ -187,6 +220,7 @@ const Ecosmart = () => {
 
     return(  
         <div className='Ecosmart'>
+          
             <Modal isOpen={isModalOpen} onClose={closeModal} text={modalText}  />
              <div className='navbar'>
                 <a>Dados Reciclagem</a>
@@ -330,6 +364,12 @@ const Ecosmart = () => {
                     <img  className='cover' width={"100%"} src='/ecosmart-icons/cover.png'></img>
                     <div className='contentbox'>
                     <img className="recycle-icon"  width={"80px"} src='/ecosmart-icons/recycle.png'></img>
+                    </div>
+                </div>
+                <div className='card' id='coffee' style={{backgroundColor: "rgb(229, 229, 229)"}}>
+                    <img  className='cover' width={"100%"} style={{objectFit: 'cover'}} src='/ecosmart-icons/cupcollector2.png'></img>
+                    <div className='contentbox'>
+                    <img className="recycle-icon"  width={"70px"} src='/ecosmart-icons/cup.png'></img>
                     </div>
                 </div>
             </div>
